@@ -2,23 +2,23 @@ import './App.css'
 import { Biohazard } from 'lucide-react'
 import { Navbar } from './components/Navbar'
 import { Feed } from './components/Feed'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+const router = createBrowserRouter([
+  { path: "/", element: <Feed />},
+  { path: "/explore", element: <Biohazard />}
+  
+])
 
 function App() {
+
+  
+
 
   return (
     <div className='flex'>
       <Navbar />
-      {/* <div>
-        <div className="flex text-3xl">
-          <Biohazard className='w-12 h-12' /><h1>Welcome To Hazard</h1>
-        </div>
-        <div className="w-80 h-2 bg-[#BF0000] mx-auto my-4"></div>
-        
-        <p>
-          View all the dirty secrets of Cipher Society
-        </p>
-      </div> */}
-      <Feed />
+      <RouterProvider router={router} />
     </div>
   )
 }
