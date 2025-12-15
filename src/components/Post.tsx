@@ -33,9 +33,9 @@ export const Post: React.FC<PostProps> = ({
     };
     return (
         <div className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
-            <div className='font-semibold flex gap-2 mb-1 text-gray-600'><CircleUserRound />User {userId}</div>
+            <div className='font-semibold flex gap-2 mb-1 text-[#36423E]'><CircleUserRound />User {userId}</div>
             <img 
-                src={`https://placehold.co/500x550?text=${encodeURIComponent(title)}`}
+                src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${encodeURIComponent(title)}`}
                 alt={title}
                 className='w-full h-auto object-cover'
                 onClick={toggleDetails}
@@ -47,7 +47,7 @@ export const Post: React.FC<PostProps> = ({
                     5
                     <MessageCircle size={20} />
                 </div>
-                <div className='text-red-500 flex font-bold text-xl items-center gap-1' title='Danger Score'>
+                <div className='text-[#BF0000] flex font-bold text-xl items-center gap-1' title='Danger Score'>
                     {dangerScore()}
                     <Skull size={24} />
                 </div>

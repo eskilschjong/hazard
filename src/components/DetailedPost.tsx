@@ -41,20 +41,20 @@ export const DetailedPost: React.FC<PostProps> = ({
             <div className='fixed inset-0 bg-black opacity-50' onClick={onClose}></div>
             <div className="fixed flex bg-white w-[60vw] h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-r-lg">
                 <img 
-                    src={`https://placehold.co/500x550?text=${encodeURIComponent(title)}`}
+                    src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${encodeURIComponent(title)}`}
                     alt={title}
                     className='w-full h-auto object-cover'
                 />
                 <div className='flex flex-col pb-4'>
                     <div className='flex flex-col border-b border-gray-300 p-4'>
-                        <div className='font-semibold flex gap-2 text-gray-600'><CircleUserRound /> User {userId}</div>
+                        <div className='font-semibold flex gap-2 text-[#36423E]'><CircleUserRound /> User {userId}</div>
                         <div className='flex '>
                             <h2 className='text-base font-semibold flex-1 mr-2'>{title}</h2>
                             <div className='flex font-bold text-xl items-center mr-2 gap-1' title='Comments'>
                                 {comments.length}
                                 <MessageCircle size={20} />
                             </div>
-                            <div className='text-red-500 flex font-bold text-xl items-center gap-1' title='Danger Score'>
+                            <div className='text-[#BF0000] flex font-bold text-xl items-center gap-1' title='Danger Score'>
                                 {dangerScore}
                                 <Skull size={24} />
                             </div>
@@ -68,7 +68,7 @@ export const DetailedPost: React.FC<PostProps> = ({
                                     [&::-webkit-scrollbar-thumb]:bg-gray-300'>
                         {comments.map(c => (
                             <div key={c.id} className='border-b border-gray-300 mb-4 py-4 pr-4'>
-                                <div className='font-semibold flex items-center gap-2 text-gray-600'>
+                                <div className='font-semibold flex items-center gap-2 text-[#36423E]'>
                                     <CircleUserRound />
                                     {c.email}
                                 </div>
