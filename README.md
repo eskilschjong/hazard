@@ -8,6 +8,7 @@ Hazard allows you to experience their secrets through a social media user interf
 
 - React
 - TypeScript
+- Vite
 - Tailwind CSS
 - Lucide Icons
 - React Router
