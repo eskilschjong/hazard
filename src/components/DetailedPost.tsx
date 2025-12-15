@@ -44,7 +44,7 @@ export const DetailedPost: React.FC<PostProps> = ({
             </button>
             <div className="fixed flex bg-white w-[60vw] h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-r-lg">
                 <img 
-                    src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${encodeURIComponent(title)}`}
+                    src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${title}`}
                     alt={title}
                     className='w-full h-auto object-cover'
                 />

@@ -47,7 +47,7 @@ export const Post: React.FC<PostProps> = ({
                 </button>
             </div>
             <img 
-                src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${encodeURIComponent(title)}`}
+                src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${title}`}
                 alt={title}
                 className='w-full h-auto object-cover cursor-pointer'
                 title='Enter Detailed View'
