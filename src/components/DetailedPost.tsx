@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Skull, MessageCircle, CircleUserRound } from 'lucide-react';
+import { Skull, MessageCircle, CircleUserRound, X } from 'lucide-react';
 
 interface Comment {
     postId: number;
@@ -38,7 +38,10 @@ export const DetailedPost: React.FC<PostProps> = ({
     const [comments, setComments] = useState<Comment[]>([]);
     return (
         <div>
-            <div className='fixed inset-0 bg-black opacity-50' onClick={onClose}></div>
+            <div className='fixed inset-0 bg-black opacity-50' onClick={onClose} />
+            <button onClick={onClose} className='fixed text-white top-4 right-4 z-50 p-2' title='Close Post'>
+                <X size={30} />
+            </button>
             <div className="fixed flex bg-white w-[60vw] h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-r-lg">
                 <img 
                     src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${encodeURIComponent(title)}`}

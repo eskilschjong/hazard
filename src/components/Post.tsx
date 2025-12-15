@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Skull, MessageCircle, CircleUserRound } from 'lucide-react';
+import { Skull, MessageCircle, CircleUserRound, EyeOff } from 'lucide-react';
 import {DetailedPost} from './DetailedPost'
 
 
@@ -20,6 +20,7 @@ export const Post: React.FC<PostProps> = ({
 
     const toggleDetails = () => {
         setShowDetails(!showDetails);
+        document.body.style.overflow = !showDetails ? 'hidden' : 'auto';
     }
 
     const dangerScore = () => {
@@ -33,7 +34,15 @@ export const Post: React.FC<PostProps> = ({
     };
     return (
         <div className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
-            <div className='font-semibold flex gap-2 mb-1 text-[#36423E]'><CircleUserRound />User {userId}</div>
+            <div className='font-semibold flex mb-1 text-[#36423E]'>
+                <div className='flex-1 flex flex-row gap-2'>
+                    <CircleUserRound />
+                    User {userId}
+                </div>
+                <div title="Hide">
+                    <EyeOff />
+                </div>
+            </div>
             <img 
                 src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${encodeURIComponent(title)}`}
                 alt={title}
