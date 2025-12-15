@@ -8,13 +8,15 @@ interface PostProps {
     title: string;
     body: string;
     userId: number;
+    onHide: (id: number) => void;
 }
 
 export const Post: React.FC<PostProps> = ({
     id,
     title,
     body,
-    userId
+    userId,
+    onHide
 }) => {
     const [showDetails, setShowDetails] =  useState<boolean>(false);
 
@@ -32,6 +34,7 @@ export const Post: React.FC<PostProps> = ({
         }
         return score;
     };
+
     return (
         <div className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
             <div className='font-semibold flex mb-1 text-[#36423E]'>
@@ -39,9 +42,9 @@ export const Post: React.FC<PostProps> = ({
                     <CircleUserRound />
                     User {userId}
                 </div>
-                <div title="Hide">
+                <button title="Hide" onClick={() => onHide(id)} className="cursor-pointer">
                     <EyeOff />
-                </div>
+                </button>
             </div>
             <img 
                 src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${encodeURIComponent(title)}`}
