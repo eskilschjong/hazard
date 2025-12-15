@@ -1,5 +1,6 @@
-import React from 'react';
-import { Skull, MessageCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Skull, MessageCircle, CircleUserRound } from 'lucide-react';
+import {DetailedPost} from './DetailedPost'
 
 
 interface PostProps {
@@ -15,6 +16,12 @@ export const Post: React.FC<PostProps> = ({
     body,
     userId
 }) => {
+    const [showDetails, setShowDetails] =  useState<boolean>(false);
+
+    const toggleDetails = () => {
+        setShowDetails(!showDetails);
+    }
+
     const dangerScore = () => {
         let score = 0;
         for (const char of body) {
@@ -25,9 +32,15 @@ export const Post: React.FC<PostProps> = ({
         return score;
     };
     return (
-        <article className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
-            <div className='font-semibold'>User {userId}</div>
-            <img src={`https://placehold.co/500x550?text=${encodeURIComponent(title)}`} alt={title} className='w-full h-auto object-cover'></img>
+        <div className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
+            <div className='font-semibold flex gap-2 mb-1 text-gray-600'><CircleUserRound />User {userId}</div>
+            <img 
+                src={`https://placehold.co/500x550?text=${encodeURIComponent(title)}`}
+                alt={title}
+                className='w-full h-auto object-cover'
+                onClick={toggleDetails}
+            />
+
             <div className='flex '>
                 <h2 className='text-base font-semibold flex-1 mr-2'>{title}</h2>
                 <div className='flex font-bold text-xl items-center mr-2 gap-1' title='Comments'>
@@ -40,7 +53,10 @@ export const Post: React.FC<PostProps> = ({
                 </div>
             </div>
             <p>{body}</p>
-        </article>
+            {showDetails && (
+                <DetailedPost id={id} title={title} body={body} userId={userId} dangerScore={dangerScore()} onClose={toggleDetails} />
+            )}
+        </div>
     );
 };
 
