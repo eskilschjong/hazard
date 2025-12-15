@@ -70,7 +70,7 @@ export const DetailedPost: React.FC<PostProps> = ({
                                     [&::-webkit-scrollbar-track]:bg-gray-100
                                     [&::-webkit-scrollbar-thumb]:bg-gray-300'>
                         {comments.map(c => (
-                            <div key={c.id} className='border-b border-gray-300 mb-4 py-4 pr-4'>
+                            <div key={c.id} className='border-b border-gray-300 pb-8 mt-4 pr-4'>
                                 <div className='font-semibold flex items-center gap-2 text-[#36423E]'>
                                     <CircleUserRound />
                                     {c.email}
