@@ -50,8 +50,15 @@ const hidePost = () => {
     if (selectedPost === null) return;
 
     const hiddenPosts = JSON.parse(localStorage.getItem('hiddenPosts') || '[]');
-    hiddenPosts.push(selectedPost);
-    localStorage.setItem('hiddenPosts', JSON.stringify(hiddenPosts));
+    
+    if (sortBy === "hidden") {
+        const updatedHiddenPosts = hiddenPosts.filter((id: number) => id !== selectedPost);
+        localStorage.setItem('hiddenPosts', JSON.stringify(updatedHiddenPosts));
+    } else {
+        hiddenPosts.push(selectedPost);
+        localStorage.setItem('hiddenPosts', JSON.stringify(hiddenPosts));
+    }
+    
     setPosts(prev => prev.filter(post => post.id !== selectedPost));
     closeConfirmModal();
 }
@@ -74,7 +81,7 @@ const closeConfirmModal = () => {
                 </div>
             ))}
             {selectedPost !== null && (
-                <ConfirmModal onConfirm={hidePost} onClose={closeConfirmModal} />
+                <ConfirmModal onConfirm={hidePost} onClose={closeConfirmModal} hidden={sortBy === "hidden"}/>
             )}
         </div>
     );
