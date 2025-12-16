@@ -1,4 +1,4 @@
-import { Biohazard, House, Compass, Cog, EyeOff, CircleQuestionMark } from 'lucide-react'
+import { Biohazard, House, Cog, EyeOff, CircleQuestionMark } from 'lucide-react'
 import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
@@ -12,9 +12,6 @@ export const Navbar = () => {
             <nav className='mt-12 text-xl flex flex-col gap-6'>
                 <NavLink to="/" className='flex p-3 items-center gap-2 hover:text-[#BF0000] hover:bg-[#DAE2DF] rounded-l-lg'>
                     <House /> Home
-                </NavLink>
-                <NavLink to="/explore" className='flex p-3 items-center gap-2 hover:text-[#BF0000] hover:bg-[#DAE2DF] rounded-l-lg'>
-                    <Compass /> Explore
                 </NavLink>
                 <NavLink to="/settings" className='flex p-3 items-center gap-2 hover:text-[#BF0000] hover:bg-[#DAE2DF] rounded-l-lg'>
                     <Cog /> Settings

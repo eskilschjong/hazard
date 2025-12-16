@@ -16,7 +16,6 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Feed sortBy="default" /> },
-      { path: "/explore", element: <Explore /> },
       { path: "/hidden", element: <Feed sortBy="hidden" /> },
       { path: `/user/:userId`, element: <Feed sortBy='user' />},
       { path: `/length`, element: <Feed sortBy='length' />},
