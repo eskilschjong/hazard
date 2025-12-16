@@ -9,6 +9,7 @@ interface PostProps {
     title: string;
     body: string;
     userId: number;
+    dangerScore: number;
     hidden: boolean;
     onHide: (id: number) => void;
 }
@@ -18,6 +19,7 @@ export const Post: React.FC<PostProps> = ({
     title,
     body,
     userId,
+    dangerScore,
     hidden,
     onHide
 }) => {
@@ -27,16 +29,6 @@ export const Post: React.FC<PostProps> = ({
         setShowDetails(!showDetails);
         document.body.style.overflow = !showDetails ? 'hidden' : 'auto';
     }
-
-    const dangerScore = () => {
-        let score = 0;
-        for (const char of body) {
-            if ('aeiouAEIOU'.includes(char)) {
-            score++;
-            }
-        }
-        return score;
-    };
 
     return (
         <div className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
@@ -65,13 +57,13 @@ export const Post: React.FC<PostProps> = ({
                     <MessageCircle size={20} />
                 </div>
                 <div className='text-[#BF0000] flex font-bold text-xl items-center gap-1' title='Danger Score'>
-                    {dangerScore()}
+                    {dangerScore}
                     <Skull size={24} />
                 </div>
             </div>
             <p>{body}</p>
             {showDetails && (
-                <DetailedPost id={id} title={title} body={body} userId={userId} dangerScore={dangerScore()} onClose={toggleDetails} />
+                <DetailedPost id={id} title={title} body={body} userId={userId} dangerScore={dangerScore} onClose={toggleDetails} />
             )}
         </div>
     );
