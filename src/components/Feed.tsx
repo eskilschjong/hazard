@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Post } from "./Post";
 import { ConfirmModal } from "./ConfirmModal"
+import { useParams } from "react-router-dom";
 
 
 interface Post {
@@ -18,33 +19,39 @@ export const Feed = ({ sortBy }: FeedProps) => {
     
 const [posts, setPosts] = useState<Post[]>([]);
 const [selectedPost, setSelectedPost] = useState<number | null>(null);
+const { userId } = useParams();
+const userIdNumber = userId ? Number(userId) : null;
 
 useEffect(() => {
   fetch("https://jsonplaceholder.typicode.com/posts")
     .then(res => res.json())
     .then((data: Post[]) => {
-      const hiddenPosts: number[] = JSON.parse(
-        localStorage.getItem("hiddenPosts") || "[]"
-      );
+        const hiddenPosts: number[] = JSON.parse(
+            localStorage.getItem("hiddenPosts") || "[]"
+        );
 
-      let result: Post[];
+        let result: Post[];
 
-      switch (sortBy) {
-        case "home":
-          result = data.filter(post => !hiddenPosts.includes(post.id));
-          break;
+        switch (sortBy) {
+            case "home":
+                result = data.filter(post => !hiddenPosts.includes(post.id));
+                break;
 
-        case "hidden":
-          result = data.filter(post => hiddenPosts.includes(post.id)).reverse();
-          break;
+            case "hidden":
+                result = data.filter(post => hiddenPosts.includes(post.id)).reverse();
+                break;
 
-        default:
-          result = data;
-      }
+            case "user":
+                result = data.filter(post => post.userId === userIdNumber && !hiddenPosts.includes(post.id));
+                break;
 
-      setPosts(result);
+            default:
+            result = data;
+        }
+
+        setPosts(result, );
     });
-}, [sortBy]);
+}, [sortBy, userIdNumber]);
 
 const hidePost = () => {
     if (selectedPost === null) return;

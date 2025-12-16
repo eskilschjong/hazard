@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Skull, MessageCircle, CircleUserRound, Eye, EyeOff } from 'lucide-react';
 import {DetailedPost} from './DetailedPost'
+import { NavLink } from "react-router-dom";
 
 
 interface PostProps {
@@ -40,10 +41,11 @@ export const Post: React.FC<PostProps> = ({
     return (
         <div className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
             <div className='font-semibold flex mb-1 text-[#36423E]'>
-                <div className='flex-1 flex flex-row gap-2'>
+                <NavLink to={`/user/${userId}`} className='flex-1 flex flex-row gap-2'>
                     <CircleUserRound />
                     User {userId}
-                </div>
+                </NavLink>
+
                 <button title={hidden ? "Show" : "Hide"} onClick={() => onHide(id)} className="cursor-pointer">
                     {hidden ? <EyeOff /> : <Eye />}
                 </button>
