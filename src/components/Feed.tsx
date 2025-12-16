@@ -34,7 +34,7 @@ useEffect(() => {
         let result: Post[];
 
         switch (sortBy) {
-            case "home":
+            case "default":
                 result = data.filter(post => !hiddenPosts.includes(post.id));
                 break;
 

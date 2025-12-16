@@ -1,5 +1,4 @@
 import './App.css'
-import { Biohazard } from 'lucide-react'
 import { Navbar } from './components/Navbar'
 import { Feed } from './components/Feed'
 import { Explore } from './components/Explore'
@@ -16,7 +15,7 @@ const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      { path: "/", element: <Feed sortBy="home" /> },
+      { path: "/", element: <Feed sortBy="default" /> },
       { path: "/explore", element: <Explore /> },
       { path: "/hidden", element: <Feed sortBy="hidden" /> },
       { path: `/user/:userId`, element: <Feed sortBy='user' />},

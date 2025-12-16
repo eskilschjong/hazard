@@ -1,13 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { Skull, Ruler, ChevronDown} from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 interface ExploreProps {
     sortBy?: string;
-    order: string;
 }
 
-export const Explore = ({ sortBy = "Home" }) => {
-    const exploreButton = "w-40 h-5 bg-gradient-to-b from-[#E95454] to-[#FFA673] border border-4 border-[#B54242] rounded-lg flex items-center justify-center text-xl font-bold text-white";
+export const Explore = ({ sortBy = "Default" }: ExploreProps) => {
     return (
         <div className="ml-[75vw] h-[70vh] mt-[15vh] p-4 fixed w-[20vw] flex flex-col items-center border-2 border-gray-400 rounded-xl">
             <h1 className="text-xl font-semibold mb-2">Browsing By:</h1>
@@ -17,7 +15,7 @@ export const Explore = ({ sortBy = "Home" }) => {
                     {sortBy}
                 </button>
                 <div className="absolute left-0 hidden flex-col bg-white group-focus-within:flex w-full rounded-b-2xl overflow-hidden">
-                    <NavLink to="/danger" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#dae2df] border-b border-t border-gray-100">
+                    <NavLink to="/" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#dae2df] border-b border-t border-gray-100">
                         <span>Default</span>
                     </NavLink>
                     <NavLink to="/danger" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#dae2df] border-b border-t border-gray-100">
