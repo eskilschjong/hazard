@@ -1,7 +1,6 @@
 import './App.css'
 import { Navbar } from './components/Navbar'
 import { Feed } from './components/Feed'
-import { Explore } from './components/Explore'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
 const Layout = () => (
