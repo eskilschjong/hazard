@@ -2,25 +2,27 @@ import './App.css'
 import { Biohazard } from 'lucide-react'
 import { Navbar } from './components/Navbar'
 import { Feed } from './components/Feed'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+
+const Layout = () => (
+  <div className="flex">
+    <Navbar />
+    <Outlet />
+  </div>
+);
 
 const router = createBrowserRouter([
-  { path: "/", element: <Feed />},
-  { path: "/explore", element: <Biohazard />}
-  
-])
-
+  {
+    element: <Layout />,
+    children: [
+      { path: "/", element: <Feed sortBy="home" /> },
+      { path: "/explore", element: <Biohazard /> },
+      { path: "/hidden", element: <Feed sortBy="hidden" /> },
+    ],
+  },
+]);
 function App() {
-
-  
-
-
-  return (
-    <div className='flex'>
-      <Navbar />
-      <RouterProvider router={router} />
-    </div>
-  )
+  return <RouterProvider router={router} />;
 }
 
 export default App

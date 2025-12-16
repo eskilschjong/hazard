@@ -10,21 +10,41 @@ interface Post {
   userId: number;
 }
 
-export const Feed = () => {
+interface FeedProps {
+    sortBy: string;
+}
+
+export const Feed = ({ sortBy }: FeedProps) => {
     
 const [posts, setPosts] = useState<Post[]>([]);
 const [selectedPost, setSelectedPost] = useState<number | null>(null);
 
 useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(res => res.json())
-        .then(data => {
-            const hiddenPosts = JSON.parse(localStorage.getItem('hiddenPosts') || '[]');
-            const filteredPosts = data.filter((post: Post) => !hiddenPosts.includes(post.id));
-            setPosts(filteredPosts);
-        })
-        .catch(err => console.error(err))
-}, []);
+  fetch("https://jsonplaceholder.typicode.com/posts")
+    .then(res => res.json())
+    .then((data: Post[]) => {
+      const hiddenPosts: number[] = JSON.parse(
+        localStorage.getItem("hiddenPosts") || "[]"
+      );
+
+      let result: Post[];
+
+      switch (sortBy) {
+        case "home":
+          result = data.filter(post => !hiddenPosts.includes(post.id));
+          break;
+
+        case "hidden":
+          result = data.filter(post => hiddenPosts.includes(post.id)).reverse();
+          break;
+
+        default:
+          result = data;
+      }
+
+      setPosts(result);
+    });
+}, [sortBy]);
 
 const hidePost = () => {
     if (selectedPost === null) return;
