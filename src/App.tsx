@@ -2,6 +2,7 @@ import './App.css'
 import { Biohazard } from 'lucide-react'
 import { Navbar } from './components/Navbar'
 import { Feed } from './components/Feed'
+import { Explore } from './components/Explore'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
 const Layout = () => (
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Feed sortBy="home" /> },
-      { path: "/explore", element: <Biohazard /> },
+      { path: "/explore", element: <Explore /> },
       { path: "/hidden", element: <Feed sortBy="hidden" /> },
       { path: `/user/:userId`, element: <Feed sortBy='user' />},
       { path: `/length`, element: <Feed sortBy='length' />},

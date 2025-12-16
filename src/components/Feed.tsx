@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Post } from "./Post";
 import { ConfirmModal } from "./ConfirmModal"
 import { useParams } from "react-router-dom";
+import { Explore } from "./Explore";
 
 
 interface Post {
@@ -102,17 +103,19 @@ const closeConfirmModal = () => {
 
 
     return (
-        
-        <div className="ml-[35vw]">
-            {posts.map(p => (
-                <div key={p.id}>
-                    <Post id={p.id} title={p.title} body={p.body} userId={p.userId} dangerScore={dangerScore(p.body)} hidden={sortBy === "hidden"} onHide={openConfirmModal} />
-                </div>
-            ))}
-            {selectedPost !== null && (
-                <ConfirmModal onConfirm={hidePost} onClose={closeConfirmModal} hidden={sortBy === "hidden"}/>
-            )}
-        </div>
+        <>
+            <div className="ml-[35vw]">
+                {posts.map(p => (
+                    <div key={p.id}>
+                        <Post id={p.id} title={p.title} body={p.body} userId={p.userId} dangerScore={dangerScore(p.body)} hidden={sortBy === "hidden"} onHide={openConfirmModal} />
+                    </div>
+                ))}
+                {selectedPost !== null && (
+                    <ConfirmModal onConfirm={hidePost} onClose={closeConfirmModal} hidden={sortBy === "hidden"}/>
+                )}
+            </div>
+            <Explore sortBy={sortBy}/>
+        </>
     );
 }
 

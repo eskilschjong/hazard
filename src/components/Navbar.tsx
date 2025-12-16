@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
     return (
-        <div className="fixed ml-30 w-64 h-lvh border-r-2 border-gray-400">
+        <div className="fixed ml-30 w-64 h-lvh border-r-2 bg-white border-gray-400">
             <div className='flex items-center text-3xl font-bold mt-6'>
                 <Biohazard className='w-8 h-8' /><h1>HAZARD</h1>
             </div>
