@@ -44,6 +44,18 @@ useEffect(() => {
             case "user":
                 result = data.filter(post => post.userId === userIdNumber && !hiddenPosts.includes(post.id));
                 break;
+            
+            case "length":
+                result = data
+                    .filter(post => !hiddenPosts.includes(post.id))
+                    .sort((a, b) => b.body.length - a.body.length);
+                break;
+            
+            case "danger":
+                result = data
+                    .filter(post => !hiddenPosts.includes(post.id))
+                    .sort((a, b) => dangerScore(b.body) - dangerScore(a.body));
+                break;
 
             default:
             result = data;
@@ -52,6 +64,16 @@ useEffect(() => {
         setPosts(result, );
     });
 }, [sortBy, userIdNumber]);
+
+const dangerScore = ( body: string ) => {
+        let score = 0;
+        for (const char of body) {
+            if ('aeiouAEIOU'.includes(char)) {
+            score++;
+            }
+        }
+        return score;
+    };
 
 const hidePost = () => {
     if (selectedPost === null) return;

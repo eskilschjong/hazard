@@ -18,7 +18,9 @@ const router = createBrowserRouter([
       { path: "/", element: <Feed sortBy="home" /> },
       { path: "/explore", element: <Biohazard /> },
       { path: "/hidden", element: <Feed sortBy="hidden" /> },
-      { path: `/user/:userId`, element: <Feed sortBy='user' />}
+      { path: `/user/:userId`, element: <Feed sortBy='user' />},
+      { path: `/length`, element: <Feed sortBy='length' />},
+      { path: `/danger`, element: <Feed sortBy='danger' />}
     ],
   },
 ]);
