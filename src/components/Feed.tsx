@@ -70,8 +70,7 @@ const closeConfirmModal = () => {
         <div className="ml-[35vw]">
             {posts.map(p => (
                 <div key={p.id}>
-                    <Post id={p.id} title={p.title} body={p.body} userId={p.userId} onHide={openConfirmModal} />
-                    
+                    <Post id={p.id} title={p.title} body={p.body} userId={p.userId} hidden={sortBy === "hidden"} onHide={openConfirmModal} />
                 </div>
             ))}
             {selectedPost !== null && (

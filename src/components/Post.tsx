@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Skull, MessageCircle, CircleUserRound, EyeOff } from 'lucide-react';
+import { Skull, MessageCircle, CircleUserRound, Eye, EyeOff } from 'lucide-react';
 import {DetailedPost} from './DetailedPost'
 
 
@@ -8,6 +8,7 @@ interface PostProps {
     title: string;
     body: string;
     userId: number;
+    hidden: boolean;
     onHide: (id: number) => void;
 }
 
@@ -16,6 +17,7 @@ export const Post: React.FC<PostProps> = ({
     title,
     body,
     userId,
+    hidden,
     onHide
 }) => {
     const [showDetails, setShowDetails] =  useState<boolean>(false);
@@ -42,8 +44,8 @@ export const Post: React.FC<PostProps> = ({
                     <CircleUserRound />
                     User {userId}
                 </div>
-                <button title="Hide" onClick={() => onHide(id)} className="cursor-pointer">
-                    <EyeOff />
+                <button title={hidden ? "Show" : "Hide"} onClick={() => onHide(id)} className="cursor-pointer">
+                    {hidden ? <EyeOff /> : <Eye />}
                 </button>
             </div>
             <img 
