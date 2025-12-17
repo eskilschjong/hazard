@@ -152,7 +152,11 @@ export const Feed = ({ sortBy }: FeedProps) => {
                 ))
                 )}
                 {selectedPost !== null && (
-                    <ConfirmModal onConfirm={hidePost} onClose={closeConfirmModal} hidden={sortBy === "hidden"}/>
+                    <ConfirmModal 
+                        onConfirm={() => hidePost()} 
+                        onClose={closeConfirmModal} 
+                        hidden={sortBy === "hidden"}
+                    />
                 )}
             </div>
             <Explore sortBy={sortBy}/>
