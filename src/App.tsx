@@ -3,6 +3,7 @@ import { Feed } from './components/Feed'
 import { About } from './components/About'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { Settings } from './components/Settings'
+import { useEffect } from 'react'
 
 const Layout = () => (
     <>
@@ -25,7 +26,16 @@ const router = createBrowserRouter([
     ],
   },
 ], {basename: "/hazard/" });
+
 function App() {
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+  
   return (
     <div className="flex">
       <RouterProvider router={router} />

@@ -6,7 +6,8 @@ export const Settings = () => {
     });
 
     const [isConfirmModal, setIsConfirmModal] = useState(() => {
-        return localStorage.confirmModal === "true";
+        const stored = localStorage.getItem('confirmModal');
+        return stored !== "false"; 
     });
 
     const toggleTheme = () => {
