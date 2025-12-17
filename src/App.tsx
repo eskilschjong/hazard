@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       { path: `/danger`, element: <Feed sortBy='danger' />}
     ],
   },
-]);
+], {basename: "/hazard/" });
 function App() {
   return (
     <div className="flex">
