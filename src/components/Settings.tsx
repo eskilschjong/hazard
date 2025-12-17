@@ -29,8 +29,8 @@ export const Settings = () => {
 
     return (
         <div className="ml-[35vw]">
-            <h1 className="text-4xl mt-[25vh] font-semibold">Settings</h1>
-            <div className="w-60 h-1 bg-[var(--color-red)] dark:bg-[var(--color-red-dark)] mb-4"></div>
+            <h1 className="text-4xl mt-[25vh] font-semibold mb-1">Settings</h1>
+            <div className="w-35 h-1 bg-[var(--color-red)] dark:bg-[var(--color-red-dark)] mb-4"></div>
             <div className='flex flex-col'>
                 <label className="inline-flex items-center cursor-pointer">
                     <input
