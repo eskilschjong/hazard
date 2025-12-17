@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const Settings = () => {
     const [isDark, setIsDark] = useState(() => {
-        return localStorage.theme === "dark" || !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        return localStorage.theme === "dark";
     });
 
     const [isConfirmModal, setIsConfirmModal] = useState(() => {

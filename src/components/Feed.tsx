@@ -76,26 +76,31 @@ const dangerScore = ( body: string ) => {
         return score;
     };
 
-const hidePost = () => {
-    if (selectedPost === null) return;
+const hidePost = (postId?: number) => {
+    const id = postId ?? selectedPost;
+    if (id === null || id === undefined) return;
 
     const hiddenPosts = JSON.parse(localStorage.getItem('hiddenPosts') || '[]');
     
     if (sortBy === "hidden") {
-        const updatedHiddenPosts = hiddenPosts.filter((id: number) => id !== selectedPost);
+        const updatedHiddenPosts = hiddenPosts.filter((hidId: number) => hidId !== id);
         localStorage.setItem('hiddenPosts', JSON.stringify(updatedHiddenPosts));
     } else {
-        hiddenPosts.push(selectedPost);
+        hiddenPosts.push(id);
         localStorage.setItem('hiddenPosts', JSON.stringify(hiddenPosts));
     }
     
-    setPosts(prev => prev.filter(post => post.id !== selectedPost));
+    setPosts(prev => prev.filter(post => post.id !== id));
     closeConfirmModal();
 }
 
 const openConfirmModal = (id: number) => {
+    if (localStorage.getItem('confirmModal') === "false") {
+    hidePost(id);
+    } else {
     setSelectedPost(id);
-}
+    }
+};
 
 const closeConfirmModal = () => {
     setSelectedPost(null);
