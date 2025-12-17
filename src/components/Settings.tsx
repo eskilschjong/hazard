@@ -2,30 +2,48 @@ import { useState } from 'react';
 
 export const Settings = () => {
     const [isDark, setIsDark] = useState(() => {
-        return localStorage.theme === "dark";
+        try {
+            return localStorage.getItem('theme') === "dark";
+        } catch (error) {
+            console.error('Error accessing localStorage:', error);
+            return false;
+        }
     });
 
     const [isConfirmModal, setIsConfirmModal] = useState(() => {
-        const stored = localStorage.getItem('confirmModal');
-        return stored !== "false"; 
+        try {
+            const stored = localStorage.getItem('confirmModal');
+            return stored !== "false";
+        } catch (error) {
+            console.error('Error accessing localStorage:', error);
+            return true;
+        }
     });
 
     const toggleTheme = () => {
         const newDark = !isDark;
         setIsDark(newDark);
-        if (newDark) {
-            localStorage.theme = "dark";
-            document.documentElement.classList.add("dark");
-        } else {
-            localStorage.theme = "light";
-            document.documentElement.classList.remove("dark");
+        try {
+            if (newDark) {
+                localStorage.setItem('theme', 'dark');
+                document.documentElement.classList.add("dark");
+            } else {
+                localStorage.setItem('theme', 'light');
+                document.documentElement.classList.remove("dark");
+            }
+        } catch (error) {
+            console.error('Error writing to localStorage:', error);
         }
     };
 
     const toggleConfirmModal = () => {
         const newConfirmModal = !isConfirmModal;
         setIsConfirmModal(newConfirmModal);
-        localStorage.confirmModal = newConfirmModal;
+        try {
+            localStorage.setItem('confirmModal', String(newConfirmModal));
+        } catch (error) {
+            console.error('Error writing to localStorage:', error);
+        }
     };
 
     return (

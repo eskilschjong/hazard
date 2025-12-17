@@ -33,9 +33,14 @@ export const Feed = ({ sortBy }: FeedProps) => {
                 const response = await fetch("https://jsonplaceholder.typicode.com/posts");
                 const data: Post[] = await response.json();
 
-                const hiddenPosts: number[] = JSON.parse(
-                    localStorage.getItem("hiddenPosts") || "[]"
-                );
+                let hiddenPosts: number[] = [];
+                try {
+                    hiddenPosts = JSON.parse(
+                        localStorage.getItem("hiddenPosts") || "[]"
+                    );
+                } catch (error) {
+                    console.error('Error accessing localStorage:', error);
+                }
 
                 let result: Post[];
 
@@ -100,14 +105,18 @@ export const Feed = ({ sortBy }: FeedProps) => {
         const id = postId ?? selectedPost;
         if (id === null || id === undefined) return;
 
-        const hiddenPosts = JSON.parse(localStorage.getItem('hiddenPosts') || '[]');
+        try {
+            const hiddenPosts = JSON.parse(localStorage.getItem('hiddenPosts') || '[]');
 
-        if (sortBy === "hidden") {
-            const updatedHiddenPosts = hiddenPosts.filter((hidId: number) => hidId !== id);
-            localStorage.setItem('hiddenPosts', JSON.stringify(updatedHiddenPosts));
-        } else {
-            hiddenPosts.push(id);
-            localStorage.setItem('hiddenPosts', JSON.stringify(hiddenPosts));
+            if (sortBy === "hidden") {
+                const updatedHiddenPosts = hiddenPosts.filter((hidId: number) => hidId !== id);
+                localStorage.setItem('hiddenPosts', JSON.stringify(updatedHiddenPosts));
+            } else {
+                hiddenPosts.push(id);
+                localStorage.setItem('hiddenPosts', JSON.stringify(hiddenPosts));
+            }
+        } catch (error) {
+            console.error('Error accessing localStorage:', error);
         }
 
         setPosts(prev => prev.filter(post => post.id !== id));
@@ -115,9 +124,14 @@ export const Feed = ({ sortBy }: FeedProps) => {
     }
 
     const openConfirmModal = (id: number) => {
-        if (localStorage.getItem('confirmModal') === "false") {
-            hidePost(id);
-        } else {
+        try {
+            if (localStorage.getItem('confirmModal') === "false") {
+                hidePost(id);
+            } else {
+                setSelectedPost(id);
+            }
+        } catch (error) {
+            console.error('Error accessing localStorage:', error);
             setSelectedPost(id);
         }
     };

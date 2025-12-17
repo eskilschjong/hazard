@@ -29,10 +29,14 @@ const router = createBrowserRouter([
 
 function App() {
   useEffect(() => {
-    if (localStorage.theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    try {
+      if (localStorage.getItem('theme') === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } catch (error) {
+      console.error('Error accessing localStorage:', error);
     }
   }, []);
   
