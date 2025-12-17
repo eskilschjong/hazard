@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +15,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+:root {
+  --color-red: #bf0000;
+  --color-red-dark: #ff5b5b;
+}
+
+html.dark {
+  background-color: #36423E;
+  color: white;
+  }
 
 body {
   margin: 0;

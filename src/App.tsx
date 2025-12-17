@@ -3,12 +3,13 @@ import { Navbar } from './components/Navbar'
 import { Feed } from './components/Feed'
 import { About } from './components/About'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+import { Settings } from './components/Settings'
 
 const Layout = () => (
-  <div className="flex">
-    <Navbar />
-    <Outlet />
-  </div>
+    <>
+        <Navbar />
+        <Outlet />
+    </>
 );
 
 const router = createBrowserRouter([
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Feed sortBy="default" /> },
+      { path: "/settings", element: <Settings /> },
       { path: "/hidden", element: <Feed sortBy="hidden" /> },
       { path: "/about", element: <About />},
       { path: `/user/:userId`, element: <Feed sortBy='user' />},
@@ -25,7 +27,11 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="flex">
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App

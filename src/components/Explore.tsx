@@ -7,14 +7,14 @@ interface ExploreProps {
 
 export const Explore = ({ sortBy = "Default" }: ExploreProps) => {
     return (
-        <div className="ml-[75vw] h-[70vh] mt-[15vh] p-4 fixed w-[20vw] min-w-80 flex flex-col items-center border-l-2 bg-white border-gray-300">
+        <div className="ml-[75vw] h-[70vh] mt-[15vh] p-4 fixed w-[20vw] min-w-80 flex flex-col items-center border-l-2 bg-white dark:bg-[#36423E] border-gray-300">
             <h1 className="text-xl font-semibold mb-2">Browsing By:</h1>
             <div className="relative inline-block group w-[50%] mb-10">
                 <button className="flex justify-center items-center w-full py-2 bg-[#dae2df] rounded-2xl group-hover:rounded-b-none capitalize">
                     <ChevronDown className="absolute left-4 text-[#36423e]" />
                     {sortBy}
                 </button>
-                <div className="absolute left-0 hidden flex-col bg-white group-hover:flex w-full rounded-b-2xl overflow-hidden">
+                <div className="absolute left-0 hidden flex-col bg-white dark:bg-[#36423E] group-hover:flex w-full rounded-b-2xl overflow-hidden">
                     <NavLink to="/" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#e8ede9] border-b border-t border-white hover:bg-[#dae2df]">
                         <span>Default</span>
                     </NavLink>

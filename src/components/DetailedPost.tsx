@@ -42,7 +42,7 @@ export const DetailedPost: React.FC<PostProps> = ({
             <button onClick={onClose} className='fixed text-white top-4 right-4 z-50 p-2' title='Close Post'>
                 <X size={30} />
             </button>
-            <div className="fixed z-40 flex bg-white w-[60vw] h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-r-lg">
+            <div className="fixed z-40 flex bg-white dark:bg-[#36423E] w-[60vw] h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-r-lg">
                 <img 
                     src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${title}`}
                     alt={title}
@@ -57,7 +57,7 @@ export const DetailedPost: React.FC<PostProps> = ({
                                 {comments.length}
                                 <MessageCircle size={20} />
                             </div>
-                            <div className='text-[#BF0000] flex font-bold text-xl items-center gap-1' title='Danger Score'>
+                            <div className='text-[var(--color-red)] dark:text-[var(--color-red-dark)] flex font-bold text-xl items-center gap-1' title='Danger Score'>
                                 {dangerScore}
                                 <Skull size={24} />
                             </div>

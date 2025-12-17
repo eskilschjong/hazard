@@ -56,7 +56,7 @@ export const Post: React.FC<PostProps> = ({
                     5
                     <MessageCircle size={20} />
                 </div>
-                <div className='text-[#BF0000] flex font-bold text-xl items-center gap-1' title='Danger Score'>
+                <div className='text-[var(--color-red)] dark:text-[var(--color-red-dark)] flex font-bold text-xl items-center gap-1' title='Danger Score'>
                     {dangerScore}
                     <Skull size={24} />
                 </div>
