@@ -15,13 +15,13 @@ export const Explore = ({ sortBy = "Default" }: ExploreProps) => {
                     {sortBy}
                 </button>
                 <div className="absolute left-0 hidden flex-col bg-white dark:bg-[var(--color-text)] group-hover:flex w-full rounded-b-2xl overflow-hidden">
-                    <NavLink to="/" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#e8ede9] border-b border-t border-white hover:bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)]">
+                    <NavLink to="/" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#e8ede9] border-b border-t border-white hover:bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] hover:dark:bg-[#81968e]">
                         <span>Default</span>
                     </NavLink>
-                    <NavLink to="/danger" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#e8ede9] border-b border-t border-white hover:bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)]">
+                    <NavLink to="/danger" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#e8ede9] border-b border-t border-white hover:bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] hover:dark:bg-[#81968e]">
                         <span>Danger</span>
                     </NavLink>
-                    <NavLink to="/length" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#e8ede9] hover:bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)]">
+                    <NavLink to="/length" className="flex justify-center items-center gap-2 px-4 py-2 bg-[#e8ede9] hover:bg-[var(--color-accent)] dark:bg-[var(--color-accent-dark)] hover:dark:bg-[#81968e]">
                         <span>Length</span>
                     </NavLink>
                 </div>
@@ -32,7 +32,7 @@ export const Explore = ({ sortBy = "Default" }: ExploreProps) => {
                         [&::-webkit-scrollbar-track]:bg-gray-100
                         [&::-webkit-scrollbar-thumb]:bg-gray-300">
                 {Array.from({ length: 10 }, (_, i) => (
-                    <NavLink to={`/user/${i+1}`} className="border-b border-[var(--color-accent)] py-2 px-8 flex flex-row gap-2 font-semibold mb-1 text-[var(--color-text)] dark:text-[var(--color-text-dark)] hover:bg-[#e8ede9]" key={i + 1}>
+                    <NavLink to={`/user/${i+1}`} className="border-b border-[var(--color-accent)] py-2 px-8 flex flex-row gap-2 font-semibold mb-1 text-[var(--color-text)] dark:text-[var(--color-text-dark)] hover:bg-[#e8ede9] hover:dark:bg-[var(--color-accent-dark)]" key={i + 1}>
                         <CircleUserRound />
                         User {i + 1}
                     </NavLink>
