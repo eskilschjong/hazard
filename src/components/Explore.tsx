@@ -7,7 +7,7 @@ interface ExploreProps {
 
 export const Explore = ({ sortBy = "Default" }: ExploreProps) => {
     return (
-        <div className="ml-[75vw] h-[70vh] mt-[15vh] p-4 fixed w-[20vw] flex flex-col items-center border-l-2 border-gray-300">
+        <div className="ml-[75vw] h-[70vh] mt-[15vh] p-4 fixed w-[20vw] min-w-80 flex flex-col items-center border-l-2 bg-white border-gray-300">
             <h1 className="text-xl font-semibold mb-2">Browsing By:</h1>
             <div className="relative inline-block group w-[50%] mb-10">
                 <button className="flex justify-center items-center w-full py-2 bg-[#dae2df] rounded-2xl focus:rounded-b-none capitalize">
