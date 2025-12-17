@@ -32,7 +32,7 @@ export const Post: React.FC<PostProps> = ({
 
     return (
         <div className='w-[30vw] min-w-80 mt-8 pb-4 border-b border-gray-400'>
-            <div className='font-semibold flex mb-1 text-[#36423E]'>
+            <div className='font-semibold flex mb-1 text-[var(--color-text)] dark:text-[var(--color-text-dark)]'>
                 <NavLink to={`/user/${userId}`} className='flex-1 flex flex-row gap-2'>
                     <CircleUserRound />
                     User {userId}

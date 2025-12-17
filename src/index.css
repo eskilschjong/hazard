@@ -19,6 +19,10 @@
 :root {
   --color-red: #bf0000;
   --color-red-dark: #ff5b5b;
+  --color-text: #36423e;
+  --color-text-dark: #d7f1e7;
+  --color-accent: #dae2df;
+  --color-accent-dark: #63736d;
 }
 
 html.dark {

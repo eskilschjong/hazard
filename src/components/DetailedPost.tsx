@@ -42,7 +42,7 @@ export const DetailedPost: React.FC<PostProps> = ({
             <button onClick={onClose} className='fixed text-white top-4 right-4 z-50 p-2' title='Close Post'>
                 <X size={30} />
             </button>
-            <div className="fixed z-40 flex bg-white dark:bg-[#36423E] w-[60vw] h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-r-lg">
+            <div className="fixed z-40 flex bg-white dark:bg-[var(--color-text)] w-[60vw] h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-r-lg">
                 <img 
                     src={`https://placehold.co/500x550/DAE2DF/63736D/?text=${title}`}
                     alt={title}
@@ -50,7 +50,7 @@ export const DetailedPost: React.FC<PostProps> = ({
                 />
                 <div className='flex flex-col pb-4'>
                     <div className='flex flex-col border-b border-gray-300 p-4'>
-                        <div className='font-semibold flex gap-2 text-[#36423E]'><CircleUserRound /> User {userId}</div>
+                        <div className='font-semibold flex gap-2 text-[var(--color-text)] dark:text-[var(--color-text-dark)]'><CircleUserRound /> User {userId}</div>
                         <div className='flex '>
                             <h2 className='text-base font-semibold flex-1 mr-2'>{title}</h2>
                             <div className='flex font-bold text-xl items-center mr-2 gap-1' title='Comments'>
@@ -71,7 +71,7 @@ export const DetailedPost: React.FC<PostProps> = ({
                                     [&::-webkit-scrollbar-thumb]:bg-gray-300'>
                         {comments.map(c => (
                             <div key={c.id} className='border-b border-gray-300 pb-8 mt-4 pr-4'>
-                                <div className='font-semibold flex items-center gap-2 text-[#36423E]'>
+                                <div className='font-semibold flex items-center gap-2 text-[var(--color-text)] dark:text-[var(--color-text-dark)]'>
                                     <CircleUserRound />
                                     {c.email}
                                 </div>
