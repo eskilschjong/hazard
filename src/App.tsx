@@ -1,4 +1,3 @@
-import './App.css'
 import { Navbar } from './components/Navbar'
 import { Feed } from './components/Feed'
 import { About } from './components/About'
@@ -7,8 +6,8 @@ import { Settings } from './components/Settings'
 
 const Layout = () => (
     <>
-        <Navbar />
-        <Outlet />
+      <Navbar />
+      <Outlet />
     </>
 );
 
